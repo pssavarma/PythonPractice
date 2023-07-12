@@ -1,1 +1,111 @@
+import random
+
+words = 'ant babboon badger bat bear beaver camel cat clam cobra cougar coyote crow deer dog donkey duck eagle ferret fox frog goat goose hawk lion lizard llama mole rat raven rhino shark sheep spider toad turkey turtle wolf wombat zebra'
+animal_list = words.split()
+random.shuffle(animal_list)
+random_index=random.randint(0,len(animal_list)-1)
+
+print("\nWelcome to Guess the animal \n Guess the name of the animal \n or you will be hanged")
+
+animal = animal_list[random_index]
+ani = [*animal]
+length = len(ani)
+display =[]
+
+stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
+for i in range(length):
+    display = display + ["_"]
+
+for j in range(len(display)):
+    print(display[j], end="")
+print("\n")
+
+endgame = False
+lives = 6
+while endgame != True:
+    if lives == 0:
+        break
+
+    guess = input('Guess a letter: ').lower()
+
+    for i in range(len(animal)):
+        letter = animal[i]
+        if guess == letter:
+            display[i] = letter
+
+    for j in range(len(display)):
+        print(display[j], end="")
+    print("\n")
+
+    if guess not in ani:
+        lives -= 1
+        print(stages[lives])
+        if "_" not in display:
+            endgame = True
+            print("Congatulations you won!")
+    else:
+        print(stages[lives])
+        if "_" not in display:
+            endgame = True
+            print("Congatulations you won!")
+        continue
+
+    if lives == 0:
+        print(f"you lost! the word is {animal}")
+
 
