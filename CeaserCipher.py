@@ -27,3 +27,5 @@ elif option == 'decode':
     decode(ciphered_text=input_text, shift=shift)
 else:
     input_text = input("type enceode or decode to choose one: ")
+
+#need to be improved
