@@ -1,3 +1,3 @@
 # PythonPractice
-These are small codes that I wrote while practicing my python
+These are small code snippets that I am writing while practicing my python
 
